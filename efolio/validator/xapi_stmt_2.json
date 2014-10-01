@@ -1,0 +1,26 @@
+{
+    "provider":"0",
+    "id":"f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "actor":{
+        "objectType": "Agent",
+        "name":"3",
+        "mbox":"mailto:userexample.com"
+    },
+    "verb":{
+        "id":"http://adlnet.gov/expapi/verbs/created",
+        "display":{ 
+            "en-US":"created" 
+        }
+    },
+    "object":{
+        "id":"http://example.adlnet.gov/xapi/example/simplestatement",
+        "definition":{
+            "name":{ 
+                "en-US":"simple statement" 
+            },
+            "description":{ 
+                "en-US":"A simple Experience API statement. Note that the LRS does not need to have any prior information about the Actor (learner), the verb, or the Activity/object." 
+            }
+        }
+    }
+}

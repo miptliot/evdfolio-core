@@ -1,0 +1,388 @@
+{
+    "description": "schema for an xapi entry",
+    "type": "object",
+    "required": [ "provider", "id", "actor", "verb", "object" ],
+    "properties": {
+        "provider" :{
+            "$ref": "#/provider"
+        },
+        "id": {
+            "$ref": "#/uuid"
+        },
+        "actor": {
+            "oneOf": [
+                { "$ref": "#/agent" },
+                {
+                    "type": "array",
+                    "items": [
+                        { "$ref": "#/agent" }
+                    ],
+                    "uniqueItems": true
+                },
+                { "$ref": "#/group" }
+            ]
+        },
+        "verb": {
+            "type": "object",
+            "required": [ "id", "display" ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "display": {
+                    "$ref": "#/languagemap"
+                }
+            },
+            "additionalProperties": false
+        },
+        "object": {
+            "oneOf": [
+                { "$ref": "#/activity"          },
+                { "$ref": "#/group"             },
+                { "$ref": "#/statementref"      },
+                { "$ref": "#/substatement"      }
+            ]
+        },
+        "objectType": {},
+        "result": {
+            "type": "object",
+            "properties": {
+                "score": {
+                    "type": "object",
+                    "properties": {
+                        "scaled": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "raw": {
+                            "type": "number"
+                        },
+                        "min": {
+                            "type": "number"
+                        },
+                        "max": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "completion": {
+                    "type": "boolean"
+                },
+                "response": {
+                    "type": "string"
+                },
+                "duration": {
+                    "type": "string"
+                },
+                "extensions": {
+                    "$ref": "#/extensions"
+                }
+            },
+            "additionalProperties": false
+        },
+        "context": {
+            "type": "object",
+            "properties": {
+                "registration": {
+                    "$ref": "#/uuid"
+                },
+                "instructor": {
+                    "oneOf": [
+                        { "$ref": "#/agent" },
+                        { "$ref": "#/group" }
+                    ]
+                },
+                "team": {
+                    "oneOf": [
+                        { "$ref": "#/agent" },
+                        { "$ref": "#/group" }
+                    ]
+                },
+                "contextActivities": {
+                    "type": "object",
+                    "properties": {
+                        "parent": {
+                            "oneOf":[
+                                { "$ref": "#/activity" },
+                                {
+                                    "type": "array",
+                                    "items": [
+                                        { "$ref": "#/activity" }
+                                    ],
+                                    "uniqueItems": true
+                                }
+                            ]
+                        },
+                        "grouping": {
+                            "$ref": "#/activity"
+                        },
+                        "other": {
+                            "oneOf":[
+                                { "$ref": "#/activity" },
+                                {
+                                    "type": "array",
+                                    "items": [
+                                        { "$ref": "#/activity" }
+                                    ],
+                                    "uniqueItems": true
+                                }
+                            ]
+                        },
+                        "category": {
+                            "type": "array",
+                            "items": [
+                                { "$ref": "#/activity" }
+                            ],
+                            "uniqueItems": true
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "revision": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "statement": {
+                    "$ref": "#/statementref"
+                },
+                "extensions": {
+                    "$ref": "#/extensions"
+                }
+            },
+            "additionalProperties": false
+        },
+        "timestamp": {
+            "type": "string"
+        },
+        "stored": {
+            "type": "string"
+        },
+        "authority": {
+            "oneOf": [
+                { "$ref": "#/agent" },
+                { "$ref": "#/anonymousgroup" }
+            ]
+        },
+        "voided": {
+            "type": "boolean"
+        },
+        "version": {
+            "type":"string",
+            "pattern": "[0-9]{1}.[0-9]{1}.[0-9]{1}"
+        }
+        
+    },
+    "additionalProperties": false,
+    
+    
+    
+    
+    "provider": {
+        "type": "string"
+    },
+    "uuid": {
+        "type": "string",
+        "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{8}"
+    },
+    "agent": {
+        "type": "object",
+        "properties": {
+            "objectType": {
+                "enum":[ "Agent" ]
+            },
+            "name": {
+                "type": "string"
+            },
+            "mbox": {},
+            "mbox_sha1sum": {
+                "type": "string"
+            },
+            "account": {},
+            "openid": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false,
+        "required": [ "objectType" ]
+    },
+    "activity":{
+
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "objectType": {
+                "enum": ["activity"]
+            },
+            "definition": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/languagemap"
+                    },
+                    "description": {
+                        "$ref": "#/languagemap"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "interactionType": {
+                        "enum": [
+                            "true-false",
+                            "choice",
+                            "fill-in",
+                            "long-fill-in",
+                            "matching",
+                            "performance",
+                            "sequencing",
+                            "likert",
+                            "numeric",
+                            "other"
+                        ]
+                    },
+                    "correctResponsesPattern": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "extensions": {
+                        "$ref": "#/extensions"
+                    }
+                },
+                "patternProperties": {
+                    "^(choices|scale|source|target|steps)$": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "$ref": "#/languagemap"
+                            }
+                        },
+                        "required": [ "id" ],
+                        "additionalProperties": false
+                    }
+                },
+                "additionalProperties": true
+            }
+        },
+        "additionalProperties": false,
+        "required": [ "id" ]
+    },
+    "group": {
+        "oneOf": [
+            {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "objectType": {
+                        "enum": ["Group"]
+                    },
+                    "mbox":{
+                        "type": "string"
+                    },
+                    "member": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/agent"
+                        },
+                        "uniqueItems": true
+                    }
+                },
+                
+                "additionalProperties": false,
+                "required": [ "objectType" ]
+            }
+        ]
+    },
+   
+    "statementref": {
+        "type": "object",
+        "properties": {
+            "objectType": {
+                "enum": ["StatementRef"]
+            },
+            "id": {
+                "$ref": "#/uuid"
+            }
+        },
+        "additionalProperties": false,
+        "required": [ "id", "objectType" ]
+        
+    },
+    "substatement": {
+        "oneOf": [
+            {
+                "type": "object",
+                "properties": {
+                    "objectType": {
+                        "enum": ["SubStatement"]
+                    },
+                    "object": {
+                        "disallow": [{
+                            "properties": {
+                                "objectType": {
+                                    "enum": ["SubStatement"]
+                                }
+                            }
+                        }]
+                    }
+                },
+                "patternProperties": {
+                    "^(id|stored|authority|voided)$": {
+                        "type": "null"
+                    }
+                },
+                "required": [ "objectType" ]
+            }
+        ]
+    },
+    
+    
+    "extensions": {
+        "patternProperties": {
+            "^[a-zA-Z][a-zA-Z+.-]*:": {
+            }
+        },
+        "additionalProperties": false
+    },
+    "languagemap": {
+        "type": "object",
+        "patternProperties": {
+            "^(([a-zA-Z]{2,8}((-[a-zA-Z]{3}){0,3})(-[a-zA-Z]{4})?((-[a-zA-Z]{2})|(-\\d{3}))?(-[a-zA-Z\\d]{4,8})*(-[a-zA-Z\\d](-[a-zA-Z\\d]{1,8})+)*)|x(-[a-zA-Z\\d]{1,8})+|en-GB-oed|i-ami|i-bnn|i-default|i-enochian|i-hak|i-klingon|i-lux|i-mingo|i-navajo|i-pwn|i-tao|i-tsu|i-tay|sgn-BE-FR|sgn-BE-NL|sgn-CH-DE)$": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false
+    },
+    "anonymousgroup": {
+        "type": "object",
+        "properties": {
+            "member": {
+                "type": "string"
+            },
+            "name": {
+                "type": "string"
+            },
+            "objectType": {}
+        },
+        "additionalProperties": false,
+        "required": [ "member" ]
+    }
+    
+}

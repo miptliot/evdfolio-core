@@ -1,0 +1,303 @@
+{% extends "dashboard_base.html" %}
+
+
+{% load staticfiles %}
+
+{% block css %}
+    <style>
+        .col-md-3 {
+            width: 25% !important;
+        }
+        .col-md-4 {
+            width: 33.3333% !important;
+        }
+        .col-md-6 {
+            width: 50% !important;
+        }
+        .row {
+            padding-left:20px;
+        }
+        
+        .form-control {
+            margin-right: -1px;
+            margin-top: -1px;
+        }
+        .panel-title{
+            margin:15px 0 5px 0 ;
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+            
+            
+        Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+        <h3 class="page-header">Внесение записи</h3>
+                
+                
+        
+        
+        
+        
+        <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Форма записи</div>
+        <div class="panel-body">
+        
+            <button class="btn btn-md btn-success" style="width:300px;margin:10px auto;display:block;" onclick="generateFORM()"  type="submit">Сгенерировать форму</button>
+            
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+        
+            <li class="list-group-item">
+                <h3 class="panel-title">выбор языков отображения (ru-RU, en-US)</h3>
+<!--                 удерживайте Ctrl (windows) / Command (Mac) кнопку,чтобы выбрать несколько вариантов. -->
+                <div class="row">
+                    <select class="col-md-3 form-control" name="language" id="language">
+                        <option value="ru-RU" selected>ru-RU</option>
+                        <option value="en-US">en-US</option>
+                        <option value="">--</option>
+                    </select>
+                </div>
+            
+            </li>
+            <li class="list-group-item">
+            
+                <h3 class="panel-title">Identity</h3>
+                
+                <div class="row">
+                    <input class="col-md-3 form-control " type="text" id="provider_id" placeholder="Provider_id">
+                    <input class="col-md-3 form-control " type="text" id="entry_id" placeholder="Entry_id">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" id="generate_uuid">gen</button>
+                    </span>
+                </div>
+           <!-- </li>
+            <li class="list-group-item">-->
+                <h3 class="panel-title">Actor</h3>
+            
+                <div class="row">
+                    <input class="col-md-3 form-control " type="text" id="actor_object_type" placeholder="Object type" value="Agent">
+                    <input class="col-md-3 form-control " type="text" id="actor_name" placeholder="name">
+                    <input class="col-md-3 form-control " type="text" id="actor_email" placeholder="email">
+               
+                </div>
+           <!-- </li>
+            <li class="list-group-item">-->
+                <h3 class="panel-title">Verb</h3>
+                <div class="row">
+                    <select class="col-md-3 form-control"  id="verb" onchange="selectionChanged()">
+                        <option value=""></option>
+                        <option value="answered">answered</option>
+                        <option value="attempted">attempted</option>
+                        <option value="attended">attended</option>
+                        <option value="completed">completed</option>
+                        <option value="created">created</option>
+                        <option value="experienced">experienced</option>
+                        <option value="failed">failed</option>
+                        <option value="imported">imported</option>
+                        <option value="interacted">interacted</option>
+                        <option value="passed">passed</option>
+                        <option value="shared">shared</option>
+                    </select>
+                    
+                    <input class="col-md-3 form-control " type="text"  id="verb_display"  placeholder="display">
+                    
+                </div>
+                <div class="row">
+                    <input class="col-md-6 form-control " type="text" id="verb_url" placeholder="verb id ()url">
+                </div>
+                
+            <!--</li>
+            <li class="list-group-item">-->
+                <h3 class="panel-title">Object</h3>
+                <div class="row">
+                    <input class="col-md-4 form-control " type="text" id="object_url" placeholder="Object id (url)">
+                    <select class="col-md-3 form-control"  id="object_type" onchange="selectionChanged()">
+                        <option value=""> objectType -</option>
+                        <option value="activity">Activity</option>
+                        <option value="attempted">ability  \  Competency</option>
+                        <option value="attended">achievement</option>
+                        <option value="completed">meeting</option>
+                        <option value="created">plan  \   Goal</option>
+                        <option value="experienced">publication</option>
+                        <option value="failed">Interest</option>
+                        <option value="imported">Participation</option>
+                        <option value="interacted">Product</option>
+                        <option value="passed">affiliation \ organization</option>
+                        <option value="shared">Assertion / Reflexion</option>
+                    </select> 
+
+
+                </div>
+                <div class="row">
+                    <input class="col-md-4 form-control " type="text" id="object_def_name" placeholder="definition - name">
+                    <input class="col-md-4 form-control " type="text" id="object_def_description" placeholder="definition - description">
+               
+                </div>
+            <!--</li>
+            <li class="list-group-item">-->
+               <h3 class="panel-title"> Result</h3>
+                <div class="row">
+                    <input class="col-md-3 form-control " type="text" id="result_score" placeholder="Score - scaled">
+                    <select class="col-md-3 form-control" id="result_success" placeholder="success - t\f">
+                        <option value=""> success- </option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                    <select class="col-md-3 form-control"  id="result_completion" placeholder="completion - t\f">
+                        <option value=""> completion - </option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+               
+                </div>
+            <!--</li>
+            <li class="list-group-item">-->
+                <h3 class="panel-title">Timestamp </h3>
+                <div class="row">
+                    <input class="col-md-3 form-control " type="text" id="timestamp" placeholder="timestamp">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" onclick="getISODateString()" type="button">gen!</button>
+                    </span>
+                </div>
+            
+            </li>
+            <li class="list-group-item">
+            
+                <button class="btn btn-md btn-success" style="width:300px;margin:10px auto;display:block;"  onclick="generateJSON()">Сгенерировать запись</button>
+            
+            </li>
+        </ul>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        из полей выше генерируется json в поле ниже,
+        (также его можно ввести вручную)
+        затем отправляется в хранилище
+        
+        <form class="form-post" role="form" method="post">
+        {% csrf_token %}
+            
+            <textarea name="entry_json" id="entry_json" class="form-control" rows="10"></textarea>
+            
+            <button class="btn btn-md btn-warning" id="validate" onclick="validateJSON(1)" style="width:300px;margin:10px auto;display:block;" type="button">Валидировать запись</button>
+            <button class="btn btn-lg btn-primary" id="post" style="width:300px;margin:10px auto;display:block;" type="submit" disabled='disabled'>Внести запись</button>
+        </form>
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block js %}
+    
+        
+    <script src="{% static "js/tincan/tincan.js" %}" type="text/javascript" charset="utf-8"></script>
+    <script src="{% static "js/tincan/gen0.95.js" %}" type="text/javascript" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            
+/*
+            language
+            provider_id
+            entry_id
+            generate_uuid
+            actor_object_type
+            actor_name
+            actor_email
+            verb
+            verb_display
+            verb_url
+            object_url
+            object_type
+            object_def_name
+            object_def_description
+            result_score
+            result_success
+            result_completion
+            timestamp
+            
+            */
+            
+            
+            
+            
+            
+            
+            $("#generate_uuid").click(function(){
+                
+                var val = TinCan.Utils.getUUID();
+                $("#entry_id").val(val)
+            })
+            
+            getISODateString = function () {
+                var d = new Date (
+                    Date.UTC(2014, 9, 24, 8, 4, 6, 3)
+                );
+                result = TinCan.Utils.getISODateString(d);
+                $("#timestamp").val(result)
+            }
+            
+//             $('.tincan-validate').submit(function() {
+//                 var valid = true;
+//                 var errors = '';
+//                 
+//                 $(this).find('.required').each(function() {
+//                         if ($(this).val() == '' || $(this).val() == $(this).attr('title')) {
+//                                 $(this).addClass('field-error');
+//                                 errors += 'The "' + $(this).attr('title') + '" field is required\n';
+//                                 if (valid) {
+//                                         $(this).focus();
+//                                 }
+//                                 valid = false;
+//                         } else {
+//                                 $(this).removeClass('field-error');
+//                         }
+//                 });
+//                 
+//                 $(this).find('.email').each(function() {
+//                         var pattern=/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+//                         
+//                         if (!pattern.test($(this).val())) {
+//                                 $(this).addClass('field-error');
+//                                 errors += 'The email address you entered is not valid\n';
+//                                 if (valid) {
+//                                         $(this).focus();
+//                                 }
+//                                 valid = false;
+//                         } else {
+//                                 $(this).removeClass('field-error');
+//                         }
+//                 });
+//                 
+//                 if (!valid) {
+//                         alert(errors + '\n ');
+//                 }
+//                 
+//                 $(this).data('valid', valid);
+//                 
+//                 return valid;
+//             });
+            
+        })
+    </script>
+
+    
+
+{% endblock %}
+

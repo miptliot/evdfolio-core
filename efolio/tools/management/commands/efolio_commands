@@ -1,0 +1,17 @@
+
+
+
+efolio commands
+
+usage:
+(with python 2.7 - python/python2)
+
+python manage.py <command_name>
+
+
+entry_list                      - возвращает список id всех записей
+get_entry <entry_id>            - возвращает json_string записи
+post_entry <entry_string>       - принимает для строку записи в формате (json_string) для внесения в бд, пример строки:
+                                  необходимо изменить id для корректной записи
+    entry_string = '{"object": {"definition": {"name": {"en-US": "simple statement"}, "description": {"en-US": "A simple Experience ctivity/object."}}, "id": "http://example.adlnet.gov/xapi/example/simplestatement"}, "verb": {"id": "http://adlnet.gov/expapi/verbs/created", "display": {"en-US": "created"}}, "id": "f57ac10b-58cc-4372-a567-0e02b2c3d479", "actor": {"mbox": "mailto:userexample.com", "name": "3", "objectType": "Agentx"}, "provider": "0"}'
+        

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    
+    {% load staticfiles %}
+    
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "bootstrap-3.2.0-dist/css/bootstrap.min.css" %}" rel="stylesheet" media="screen" charset="utf-8">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/registration.css" %}" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVDfolio project</a>
+                </div>
+            
+        </div>
+    </div>
+    
+    <div class="container">
+
+        <form class="form-signin" role="form" method="post">
+        {% csrf_token %}
+            <h2 class="form-signin-heading">Создание аккаунта</h2>
+            <input name="email" type="email" class="form-control" placeholder="Email address" required autofocus>
+            <input name="name" class="form-control" placeholder="Name" required>
+            <input name="surname" class="form-control" placeholder="Surname" required>
+            <select name="user_type" class="form-control" placeholder="Type" required>
+                <option value="0">Администратор</option>
+                <option value="1" selected>Учитель</option>
+                <option value="2">Студент</option>
+            </select> 
+            <input name="password" type="password" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Создать аккаунт</button>
+        </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!--     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
+</html>

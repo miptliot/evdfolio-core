@@ -1,0 +1,54 @@
+{% extends "dashboard_base.html" %}
+
+
+
+{% load jsonify %}
+
+
+{% block content %}
+            
+            
+            Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+                
+
+            <h3 class="sub-header">Все записи</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th># id</th>
+                            <th>email</th>
+                            <th>timestamp</th>
+                            <th>date stored</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for entry in all_entry %}
+                        
+                            <tr>
+                                <td>
+                                    <a href="entry_{{entry.identity}}">{{entry.identity}}</a>
+                                </td>
+                                <td>
+                                    <a href="entry_{{entry.identity}}"> {% json_value entry.entry_json 'actor' 'mbox' %}</a>
+                                </td>
+                                <td>
+                                    <a href="entry_{{entry.identity}}">{% json_value entry.entry_json 'timestamp' %}</a>
+                                </td>
+                                <td>
+                                    <a href="entry_{{entry.identity}}">{% json_value entry.entry_json 'stored' %}</a>
+                                </td>
+                            </tr>
+                            
+                        {% endfor %}
+                
+                        
+                    <tbody>
+                </table>
+            </div>
+
+            
+
+
+{% endblock %}

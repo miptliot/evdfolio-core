@@ -1,0 +1,45 @@
+{% extends "dashboard_base.html" %}
+
+
+
+
+
+{% block content %}
+            
+            
+            Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+                
+
+            <h3 class="sub-header">Все онтологии</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th># id</th>
+                            <th> name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for ontology in all_ontology %}
+                        
+                            <tr>
+                                <td>
+                                    <a href="ontology_{{ontology.id}}">{{ontology.id}}</a>
+                                </td>
+                                <td>
+                                    <a href="ontology_{{ontology.id}}">{{ontology.name}}</a>
+                                </td>
+                            </tr>
+                            
+                        {% endfor %}
+                
+                        
+                    <tbody>
+                </table>
+            </div>
+
+            
+
+
+{% endblock %}

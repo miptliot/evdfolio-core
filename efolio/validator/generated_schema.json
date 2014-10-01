@@ -1,0 +1,542 @@
+{
+        "type":"object",
+        "$schema": "http://json-schema.org/draft-03/schema",
+        "id": "http://jsonschema.net",
+        "required":false,
+        "properties":{
+                "provider": {
+                        "type":"string",
+                        "id": "http://jsonschema.net/id",
+                        "required":true
+                },
+                "actor": {
+                        "type":"object",
+                        "id": "http://jsonschema.net/actor",
+                        "required":false,
+                        "properties":{
+                                "mbox": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/actor/mbox",
+                                        "required":false
+                                },
+                                "member": {
+                                        "type":"array",
+                                        "id": "http://jsonschema.net/actor/member",
+                                        "required":false,
+                                        "items":[
+                                                {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/actor/member/0",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "mbox_sha1sum": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/0/mbox_sha1sum",
+                                                                        "required":false
+                                                                },
+                                                                "name": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/0/name",
+                                                                        "required":false
+                                                                },
+                                                                "objectType": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/0/objectType",
+                                                                        "required":false
+                                                                }
+                                                        }
+                                                },
+                                                {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/actor/member/1",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "account": {
+                                                                        "type":"object",
+                                                                        "id": "http://jsonschema.net/actor/member/1/account",
+                                                                        "required":false,
+                                                                        "properties":{
+                                                                                "homePage": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/actor/member/1/account/homePage",
+                                                                                        "required":false
+                                                                                },
+                                                                                "name": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/actor/member/1/account/name",
+                                                                                        "required":false
+                                                                                }
+                                                                        }
+                                                                },
+                                                                "name": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/1/name",
+                                                                        "required":false
+                                                                },
+                                                                "objectType": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/1/objectType",
+                                                                        "required":false
+                                                                }
+                                                        }
+                                                },
+                                                {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/actor/member/2",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "name": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/2/name",
+                                                                        "required":false
+                                                                },
+                                                                "objectType": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/2/objectType",
+                                                                        "required":false
+                                                                },
+                                                                "openid": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/actor/member/2/openid",
+                                                                        "required":false
+                                                                }
+                                                        }
+                                                }
+                                        ]
+                                },
+                                "name": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/actor/name",
+                                        "required":false
+                                },
+                                "objectType": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/actor/objectType",
+                                        "required":false
+                                }
+                        }
+                },
+                "authority": {
+                        "type":"object",
+                        "id": "http://jsonschema.net/authority",
+                        "required":false,
+                        "properties":{
+                                "account": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/authority/account",
+                                        "required":false,
+                                        "properties":{
+                                                "homePage": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/authority/account/homePage",
+                                                        "required":false
+                                                },
+                                                "name": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/authority/account/name",
+                                                        "required":false
+                                                }
+                                        }
+                                },
+                                "objectType": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/authority/objectType",
+                                        "required":false
+                                }
+                        }
+                },
+                "context": {
+                        "type":"object",
+                        "id": "http://jsonschema.net/context",
+                        "required":false,
+                        "properties":{
+                                "contextActivities": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/context/contextActivities",
+                                        "required":false,
+                                        "properties":{
+                                                "category": {
+                                                        "type":"array",
+                                                        "id": "http://jsonschema.net/context/contextActivities/category",
+                                                        "required":false,
+                                                        "items":
+                                                                {
+                                                                        "type":"object",
+                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0",
+                                                                        "required":false,
+                                                                        "properties":{
+                                                                                "definition": {
+                                                                                        "type":"object",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/definition",
+                                                                                        "required":false,
+                                                                                        "properties":{
+                                                                                                "description": {
+                                                                                                        "type":"object",
+                                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/definition/description",
+                                                                                                        "required":false,
+                                                                                                        "properties":{
+                                                                                                                "en": {
+                                                                                                                        "type":"string",
+                                                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/definition/description/en",
+                                                                                                                        "required":false
+                                                                                                                }
+                                                                                                        }
+                                                                                                },
+                                                                                                "name": {
+                                                                                                        "type":"object",
+                                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/definition/name",
+                                                                                                        "required":false,
+                                                                                                        "properties":{
+                                                                                                                "en": {
+                                                                                                                        "type":"string",
+                                                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/definition/name/en",
+                                                                                                                        "required":false
+                                                                                                                }
+                                                                                                        }
+                                                                                                },
+                                                                                                "type": {
+                                                                                                        "type":"string",
+                                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/definition/type",
+                                                                                                        "required":false
+                                                                                                }
+                                                                                        }
+                                                                                },
+                                                                                "id": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/id",
+                                                                                        "required":false
+                                                                                },
+                                                                                "objectType": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/category/0/objectType",
+                                                                                        "required":false
+                                                                                }
+                                                                        }
+                                                                }
+                                                        
+
+                                                },
+                                                "other": {
+                                                        "type":"array",
+                                                        "id": "http://jsonschema.net/context/contextActivities/other",
+                                                        "required":false,
+                                                        "items":
+                                                                {
+                                                                        "type":"object",
+                                                                        "id": "http://jsonschema.net/context/contextActivities/other/0",
+                                                                        "required":false,
+                                                                        "properties":{
+                                                                                "id": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/other/0/id",
+                                                                                        "required":false
+                                                                                },
+                                                                                "objectType": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/other/0/objectType",
+                                                                                        "required":false
+                                                                                }
+                                                                        }
+                                                                }
+                                                        
+
+                                                },
+                                                "parent": {
+                                                        "type":"array",
+                                                        "id": "http://jsonschema.net/context/contextActivities/parent",
+                                                        "required":false,
+                                                        "items":
+                                                                {
+                                                                        "type":"object",
+                                                                        "id": "http://jsonschema.net/context/contextActivities/parent/0",
+                                                                        "required":false,
+                                                                        "properties":{
+                                                                                "id": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/parent/0/id",
+                                                                                        "required":false
+                                                                                },
+                                                                                "objectType": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/context/contextActivities/parent/0/objectType",
+                                                                                        "required":false
+                                                                                }
+                                                                        }
+                                                                }
+                                                        
+
+                                                }
+                                        }
+                                },
+                                "instructor": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/context/instructor",
+                                        "required":false,
+                                        "properties":{
+                                                "account": {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/context/instructor/account",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "homePage": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/context/instructor/account/homePage",
+                                                                        "required":false
+                                                                },
+                                                                "name": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/context/instructor/account/name",
+                                                                        "required":false
+                                                                }
+                                                        }
+                                                },
+                                                "name": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/instructor/name",
+                                                        "required":false
+                                                },
+                                                "objectType": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/instructor/objectType",
+                                                        "required":false
+                                                }
+                                        }
+                                },
+                                "language": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/context/language",
+                                        "required":false
+                                },
+                                "platform": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/context/platform",
+                                        "required":false
+                                },
+                                "registration": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/context/registration",
+                                        "required":false
+                                },
+                                "statement": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/context/statement",
+                                        "required":false,
+                                        "properties":{
+                                                "id": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/statement/id",
+                                                        "required":false
+                                                },
+                                                "objectType": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/statement/objectType",
+                                                        "required":false
+                                                }
+                                        }
+                                },
+                                "team": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/context/team",
+                                        "required":false,
+                                        "properties":{
+                                                "mbox": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/team/mbox",
+                                                        "required":false
+                                                },
+                                                "name": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/team/name",
+                                                        "required":false
+                                                },
+                                                "objectType": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/context/team/objectType",
+                                                        "required":false
+                                                }
+                                        }
+                                }
+                        }
+                },
+                "id": {
+                        "type":"string",
+                        "id": "http://jsonschema.net/id",
+                        "required":false
+                },
+                "object": {
+                        "type":"object",
+                        "id": "http://jsonschema.net/object",
+                        "required":false,
+                        "properties":{
+                                "definition": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/object/definition",
+                                        "required":false,
+                                        "properties":{
+                                                "description": {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/object/definition/description",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "en-GB": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/object/definition/description/en-GB",
+                                                                        "required":false
+                                                                },
+                                                                "en-US": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/object/definition/description/en-US",
+                                                                        "required":false
+                                                                }
+                                                        }
+                                                },
+                                                "extensions": {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/object/definition/extensions",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "http://example.com/profiles/meetings/activitydefinitionextensions/room": {
+                                                                        "type":"object",
+                                                                        "id": "http://jsonschema.net/object/definition/extensions/http://example.com/profiles/meetings/activitydefinitionextensions/room",
+                                                                        "required":false,
+                                                                        "properties":{
+                                                                                "id": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/object/definition/extensions/http://example.com/profiles/meetings/activitydefinitionextensions/room/id",
+                                                                                        "required":false
+                                                                                },
+                                                                                "name": {
+                                                                                        "type":"string",
+                                                                                        "id": "http://jsonschema.net/object/definition/extensions/http://example.com/profiles/meetings/activitydefinitionextensions/room/name",
+                                                                                        "required":false
+                                                                                }
+                                                                        }
+                                                                }
+                                                        }
+                                                },
+                                                "moreInfo": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/object/definition/moreInfo",
+                                                        "required":false
+                                                },
+                                                "name": {
+                                                        "type":"object",
+                                                        "id": "http://jsonschema.net/object/definition/name",
+                                                        "required":false,
+                                                        "properties":{
+                                                                "en-GB": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/object/definition/name/en-GB",
+                                                                        "required":false
+                                                                },
+                                                                "en-US": {
+                                                                        "type":"string",
+                                                                        "id": "http://jsonschema.net/object/definition/name/en-US",
+                                                                        "required":false
+                                                                }
+                                                        }
+                                                },
+                                                "type": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/object/definition/type",
+                                                        "required":false
+                                                }
+                                        }
+                                },
+                                "id": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/object/id",
+                                        "required":false
+                                },
+                                "objectType": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/object/objectType",
+                                        "required":false
+                                }
+                        }
+                },
+                "result": {
+                        "type":"object",
+                        "id": "http://jsonschema.net/result",
+                        "required":false,
+                        "properties":{
+                                "completion": {
+                                        "type":"boolean",
+                                        "id": "http://jsonschema.net/result/completion",
+                                        "required":false
+                                },
+                                "duration": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/result/duration",
+                                        "required":false
+                                },
+                                "extensions": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/result/extensions",
+                                        "required":false,
+                                        "properties":{
+                                                "http://example.com/profiles/meetings/resultextensions/minuteslocation": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/result/extensions/http://example.com/profiles/meetings/resultextensions/minuteslocation",
+                                                        "required":false
+                                                }
+                                        }
+                                },
+                                "response": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/result/response",
+                                        "required":false
+                                },
+                                "success": {
+                                        "type":"boolean",
+                                        "id": "http://jsonschema.net/result/success",
+                                        "required":false
+                                }
+                        }
+                },
+                "stored": {
+                        "type":"string",
+                        "id": "http://jsonschema.net/stored",
+                        "required":false
+                },
+                "timestamp": {
+                        "type":"string",
+                        "id": "http://jsonschema.net/timestamp",
+                        "required":false
+                },
+                "verb": {
+                        "type":"object",
+                        "id": "http://jsonschema.net/verb",
+                        "required":["id","display"],
+                        "properties":{
+                                "display": {
+                                        "type":"object",
+                                        "id": "http://jsonschema.net/verb/display",
+                                        "required":true,
+                                        "properties":{
+                                                "en-GB": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/verb/display/en-GB",
+                                                        "required":false
+                                                },
+                                                "en-US": {
+                                                        "type":"string",
+                                                        "id": "http://jsonschema.net/verb/display/en-US",
+                                                        "required":false
+                                                }
+                                        }
+                                },
+                                "id": {
+                                        "type":"string",
+                                        "id": "http://jsonschema.net/verb/id",
+                                        "required":true
+                                }
+                        }
+                },
+                "version": {
+                        "type":"string",
+                        "id": "http://jsonschema.net/version",
+                        "required":false
+                }
+        }
+}

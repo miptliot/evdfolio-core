@@ -1,0 +1,97 @@
+{% extends "dashboard_base.html" %}
+
+{% load staticfiles %}
+    
+    
+{% block css %}
+    <style>
+
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+
+        Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+
+        
+        
+        
+    <br/>
+    <br/>
+    Редактирование/добавление/удаление блоков через контекстное меню
+    <br/>
+    для выделения блока/блоков  нажать в точку, затем выделять
+    <br/>
+    для соединения связью нажать на крестик и протянуть к входному порту
+    <br/>
+    для разрыва связи - выделить кликом связь, нажать del на клавиатуре
+    <br/>
+    изменение масштаба - ctrl + колесико мыши
+    <br/>
+    
+    
+
+    
+    <div id="DiagramDiv" style="width:900px; height:500px; background-color: #DAE4E4;"></div>
+     
+     
+    <div style="margin:5px 5px 5px 0;">
+<!--         <input type="button" class="btn btn-sm btn-info" value="addChild() to selected Node" onclick="addChild()"> -->
+        <input type="button" class="btn btn-md btn-info" style="width:300px;" value="toJson() " onclick="dump_to_json()">
+    </div>
+     
+    из полей выше генерируется json в поле ниже,
+    (также его можно ввести вручную)
+    затем отправляется в хранилище
+    
+    <form class="form-post1" role="form" method="post">
+    {% csrf_token %}
+        
+        <input name="ontology_name" class="form-control" placeholder="Name" required>
+        <textarea id="ontology_json" name="ontology_json" class="form-control" rows="10"></textarea>
+        
+        <button class="btn btn-lg btn-primary" style="width:300px;margin:10px auto;display:block;" type="submit">Сохранить онтологию</button>
+    </form>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/go/go-debug.js" %}" type="text/javascript" charset="utf-8"></script><!-- use go.js when deploying -->
+    <script src="{% static "js/go/go_tree_edit.js" %}" type="text/javascript" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+        
+            init()
+        
+            
+
+
+            dump_to_json = function(){
+                
+                string = diagram.model.toJson()
+                $("#ontology_json").text(string)
+            };
+            
+       
+            
+            
+            
+        })
+    </script>
+
+    
+
+{% endblock %}

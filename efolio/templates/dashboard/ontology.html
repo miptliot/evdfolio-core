@@ -1,0 +1,169 @@
+{% extends "dashboard_base.html" %}
+
+{% load staticfiles %}
+    
+    
+{% block css %}
+    <style>
+
+    </style>
+    
+{% endblock %}
+
+
+{% load jsonify %}
+
+{% block content %}
+
+        Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+
+        
+        
+        
+    <br/>
+    
+    <h3 class="sub-header">Онтология {{ontology.name}}</h3>
+    
+    
+        
+    <br/>
+    <br/>
+    Редактирование/добавление/удаление блоков через контекстное меню
+    <br/>
+    для выделения блока/блоков нажать в точку, затем выделять
+    <br/>
+    для соединения связью нажать на крестик и протянуть к входному порту
+    <br/>
+    для разрыва связи - выделить кликом связь, нажать del на клавиатуре
+    <br/>
+    изменение масштаба - ctrl + колесико мыши
+    <br/>
+    
+
+    
+    <div id="DiagramDiv" style="width:900px; height:500px; background-color: #DAE4E4;"></div>
+     
+     
+    <div style="margin:5px 5px 5px 0;">
+<!--         <input type="button" class="btn btn-sm btn-info" value="addChild() to selected Node" onclick="addChild()"> -->
+        <input type="button" class="btn btn-md btn-info" style="width:300px;" value="toJson() " onclick="dump_to_json()">
+    </div>
+     
+
+    <br/>
+    Прежде чем отправлять нажмите кнопку toJson выше
+    
+    <form class="form-post1" role="form" method="post">
+    {% csrf_token %}
+        
+        <textarea id="ontology_json" name="ontology_json" class="form-control" rows="5" style="display:none;"></textarea>
+        
+        <button class="btn btn-lg btn-primary" style="width:300px;margin:10px auto;display:block;" type="submit">Сохранить онтологию</button>
+    </form>
+    
+    
+     
+     
+     
+     
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/go/go-debug.js" %}" type="text/javascript" charset="utf-8"></script><!-- use go.js when deploying -->
+    <script src="{% static "js/go/go_tree_edit.js" %}" type="text/javascript" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+        
+            
+            var ontology_json = {{ ontology.ontology_json|jsonify }};
+        /*
+            var $go = go.GraphObject.make;
+            var diagram =
+            $go(go.Diagram, "myDiagramDiv",{
+                initialContentAlignment: go.Spot.Center, // Center Diagram contents
+                "undoManager.isEnabled": true // enable Ctrl-Z to undo and Ctrl-Y to redo
+            });
+
+        
+            // define a function named "addChild" that is invoked by a button click
+            addChild = function() {
+                var selnode = diagram.selection.first();
+                if (!(selnode instanceof go.Node)) return;
+                diagram.startTransaction("add node and link");
+                // have the Model add a new node data
+                var new_node = { parent: selnode.data.key, key: "N" };
+//                 diagram.model.addNodeData(newnode);  // this makes sure the key is unique
+                // and then add a link data connecting the original node with the new one
+//                 var newlink = { from: selnode.data.key, to: newnode.key };
+//                 var new_node = { parent: selnode.data.key, key: newnode.key };
+                // add the new link to the model
+                diagram.model.addNodeData(new_node);
+//                 diagram.model.addLinkData(newlink);
+                // finish the transaction
+                diagram.commitTransaction("add node and link");
+            };
+        
+
+                
+            function setupTree(diagram) {
+                diagram.nodeTemplate =
+                    $go(go.Node,
+                        "Auto",
+                        $go(go.Shape,
+                            "RoundedRectangle",
+                            { fill: "white" }),
+                        $go(go.TextBlock,
+                            { margin: 5, editable: true},
+                            new go.Binding("text", "key").makeTwoWay())
+                    );
+
+                diagram.linkTemplate =
+                    $go(go.Link,
+                    { routing: go.Link.Orthogonal, corner: 5 },
+                    $go(go.Shape));
+
+            }
+
+            setupTree(diagram);
+            diagram.layout = $go(go.TreeLayout);  // automatic tree layout
+            */
+            
+            
+            
+            
+            
+            init()
+
+            diagram.model = go.Model.fromJson(ontology_json);
+
+            dump_to_json = function(){
+                
+                string = diagram.model.toJson()
+                $("#ontology_json").text(string)
+            };
+            
+            save_ontology= function(){
+                
+                string = diagram.model.toJson()
+                $("#ontology_json").text(string)
+            };
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        })
+    </script>
+
+    
+
+{% endblock %}

@@ -1,0 +1,465 @@
+{
+    "description": "schema for an xapi entry",
+    "type":"object",
+    "required":["id"],
+    "properties":{
+            "provider": {
+                    "type":"string",
+                    "required":true
+            },
+            "actor": {
+                    "type":"object",
+                    "required":false,
+                    "properties":{
+                            "mbox": {
+                                    "type":"string",
+                                    "required":false
+                            },
+                            "member": {
+                                    "type":"array",
+                                    "required":false,
+                                    "items":[
+                                            {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                            "mbox_sha1sum": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "name": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "objectType": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            }
+                                                    }
+                                            },
+                                            {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                            "account": {
+                                                                    "type":"object",
+                                                                    "required":false,
+                                                                    "properties":{
+                                                                            "homePage": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            },
+                                                                            "name": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            }
+                                                                    }
+                                                            },
+                                                            "name": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "objectType": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            }
+                                                    }
+                                            },
+                                            {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                            "name": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "objectType": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "openid": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            }
+                                                    }
+                                            }
+                                    ]
+                            },
+                            "name": {
+                                    "type":"string",
+                                    "required":false
+                            },
+                            "objectType": {
+                                    "type":"string",
+                                    "required":false
+                            }
+                    }
+            },
+            "authority": {
+                    "type":"object",
+                    "required":false,
+                    "properties":{
+                            "account": {
+                                    "type":"object",
+                                    "required":false,
+                                    "properties":{
+                                            "homePage": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "name": {
+                                                    "type":"string",
+                                                    "required":false
+                                            }
+                                    }
+                            },
+                            "objectType": {
+                                    "type":"string",
+                                    "required":false
+                            }
+                    }
+            },
+            "context": {
+                    "type":"object",
+                    "required":false,
+                    "properties":{
+                            "contextActivities": {
+                                    "type":"object",
+                                    "required":false,
+                                    "properties":{
+                                            "category": {
+                                                    "type":"array",
+                                                    "required":false,
+                                                    "items":
+                                                            {
+                                                                    "type":"object",
+                                                                    "required":false,
+                                                                    "properties":{
+                                                                            "definition": {
+                                                                                    "type":"object",
+                                                                                    "required":false,
+                                                                                    "properties":{
+                                                                                            "description": {
+                                                                                                    "type":"object",
+                                                                                                    "required":false,
+                                                                                                    "properties":{
+                                                                                                            "en": {
+                                                                                                                    "type":"string",
+                                                                                                                    "required":false
+                                                                                                            }
+                                                                                                    }
+                                                                                            },
+                                                                                            "name": {
+                                                                                                    "type":"object",
+                                                                                                    "required":false,
+                                                                                                    "properties":{
+                                                                                                            "en": {
+                                                                                                                    "type":"string",
+                                                                                                                    "required":false
+                                                                                                            }
+                                                                                                    }
+                                                                                            },
+                                                                                            "type": {
+                                                                                                    "type":"string",
+                                                                                                    "required":false
+                                                                                            }
+                                                                                    }
+                                                                            },
+                                                                            "id": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            },
+                                                                            "objectType": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            }
+                                                                    }
+                                                            }
+                                                    
+
+                                            },
+                                            "other": {
+                                                    "type":"array",
+                                                    "required":false,
+                                                    "items":
+                                                            {
+                                                                    "type":"object",
+                                                                    "required":false,
+                                                                    "properties":{
+                                                                            "id": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            },
+                                                                            "objectType": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            }
+                                                                    }
+                                                            }
+                                                    
+
+                                            },
+                                            "parent": {
+                                                    "type":"array",
+                                                    "required":false,
+                                                    "items":
+                                                            {
+                                                                    "type":"object",
+                                                                    "required":false,
+                                                                    "properties":{
+                                                                            "id": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            },
+                                                                            "objectType": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            }
+                                                                    }
+                                                            }
+                                                    
+
+                                            }
+                                    }
+                            },
+                            "instructor": {
+                                    "type":"object",
+                                    "required":false,
+                                    "properties":{
+                                            "account": {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                            "homePage": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "name": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            }
+                                                    }
+                                            },
+                                            "name": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "objectType": {
+                                                    "type":"string",
+                                                    "required":false
+                                            }
+                                    }
+                            },
+                            "language": {
+                                    "type":"string",
+                                    "required":false
+                            },
+                            "platform": {
+                                    "type":"string",
+                                    "required":false
+                            },
+                            "registration": {
+                                    "type":"string",
+                                    "required":false
+                            },
+                            "statement": {
+                                    "type":"object",
+                                    "required":false,
+                                    "properties":{
+                                            "id": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "objectType": {
+                                                    "type":"string",
+                                                    "required":false
+                                            }
+                                    }
+                            },
+                            "team": {
+                                    "type":"object",
+                                    "required":false,
+                                    "properties":{
+                                            "mbox": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "name": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "objectType": {
+                                                    "type":"string",
+                                                    "required":false
+                                            }
+                                    }
+                            }
+                    }
+            },
+            "id": {
+                    "type":"string",
+                    "required":false
+            },
+            "object": {
+                    "type":"object",
+                    "required":false,
+                    "properties":{
+                            "definition": {
+                                    "type":"object",
+                                    "required":false,
+                                    "properties":{
+                                            "description": {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                            "en-GB": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "en-US": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            }
+                                                    }
+                                            },
+                                            "extensions": {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                                    "http://example.com/profiles/meetings/activitydefinitionextensions/room": {
+                                                                    "type":"object",
+                                                                    "required":false,
+                                                                    "properties":{
+                                                                            "id": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            },
+                                                                            "name": {
+                                                                                    "type":"string",
+                                                                                    "required":false
+                                                                            }
+                                                                    }
+                                                            }
+                                                    }
+                                            },
+                                            "moreInfo": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "name": {
+                                                    "type":"object",
+                                                    "required":false,
+                                                    "properties":{
+                                                            "en-GB": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            },
+                                                            "en-US": {
+                                                                    "type":"string",
+                                                                    "required":false
+                                                            }
+                                                    }
+                                            },
+                                            "type": {
+                                                    "type":"string",
+                                                    "required":false
+                                            }
+                                    }
+                            },
+                            "id": {
+                                    "type":"string",
+                                    "required":false
+                            },
+                            "objectType": {
+                                    "type":"string",
+                                    "required":false
+                            }
+                    }
+            },
+            "result": {
+                "type": "object",
+                "properties": {
+                    "score": {
+                        "type": "object",
+                        "properties": {
+                            "scaled": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                            },
+                            "raw": {
+                                "type": "number"
+                            },
+                            "min": {
+                                "type": "number"
+                            },
+                            "max": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "success": {
+                        "type": "string"
+                    },
+                    "completion": {
+                        "type": "string"
+                    },
+                    "response": {
+                        "type": "string"
+                    },
+                    "duration": {
+                        "type": "string"
+                    },
+                    "extensions": {
+                        "$ref": "#extensions"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "stored": {
+                    "type":"string",
+                    "required":false
+            },
+            "timestamp": {
+                    "type":"string",
+                    "required":false
+            },
+            "verb": {
+                    "type":"object",
+                    "required":["id","display"],
+                    "properties":{
+                            "display": {
+                                    "type":"object",
+                                    "required":true,
+                                    "properties":{
+                                            "en-GB": {
+                                                    "type":"string",
+                                                    "required":false
+                                            },
+                                            "en-US": {
+                                                    "type":"string",
+                                                    "required":false
+                                            }
+                                    }
+                            },
+                            "id": {
+                                    "type":"string",
+                                    "required":true
+                            }
+                    }
+            },
+            "version": {
+                    "type":"string",
+                    "required":false
+            },
+            "extensions": {
+                "id": "#extensions",
+                "patternProperties": {
+                    "^[a-zA-Z][a-zA-Z+.-]*:": {
+                        "type": "any"
+                    }
+                },
+                "additionalProperties": false
+            }
+    }
+}

@@ -1,0 +1,21 @@
+{% extends "dashboard_base.html" %}
+
+
+
+
+
+{% block content %}
+            
+            
+            Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+            <h1 class="page-header">Информация</h1>
+                
+            {% if user.is_staff %}
+            
+                полезные ссылки<br/>
+                <a href="/admin/">admin</a><br/>
+                <a href="/admin/doc/">admin doc</a>
+
+            {% endif %}
+
+{% endblock %}

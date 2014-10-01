@@ -1,0 +1,124 @@
+{% extends "dashboard_base.html" %}
+
+{% load jsonify %}
+
+{% block css %}
+    <style>
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+<!--         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script> -->
+    
+        Добро пожаловать <b>{{user.first_name}} {{user.last_name}} {{user}}</b>
+        
+
+<!--        { % for entry in entrys %}
+        { % endfor %} --> 
+        
+        
+        
+            <h3> Запись {{entry.identity}}</h3>
+            
+            
+                <pre class="json_entry prettyprint">
+                
+
+                </pre>
+               
+            
+            <!--
+            <pre class="json_entry prettyprint">
+                { {entry.entry_json|safe}}
+            </pre>--> 
+
+{% endblock %}
+
+    {% block js %}
+    
+        
+         <script type="text/javascript">
+            $(document).ready(function() {
+//                 data = {{dump_entry_json|safe}};
+//             
+// //                 parsed_data = $.parseJSON( data );
+//                 var str = JSON.stringify(data, undefined, 2);
+//                 
+//                 $("#pjs").html(str) ;
+            
+            
+            
+                function output(inp) {
+//                     document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+                    $("#pjs").html( inp );
+                }
+
+                function syntaxHighlight(json) {
+                    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                        var cls = 'number';
+                        if (/^"/.test(match)) {
+                            if (/:$/.test(match)) {
+                                cls = 'key';
+                            } else {
+                                cls = 'string';
+                            }
+                        } else if (/true|false/.test(match)) {
+                            cls = 'boolean';
+                        } else if (/null/.test(match)) {
+                            cls = 'null';
+                        }
+                        return '<span class="' + cls + '">' + match + '</span>';
+                    });
+                }
+
+//                 var obj1 = {a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
+//                 var json_str = {{dump_entry_json|safe}}.replace('\'u','')
+//                 var obj = $.parseJSON( {{dump_entry_json}} );
+//                 var obj = $.parseJSON( json_str );
+
+//                 var json_str = {{dump_entry_json|safe}}
+// 
+// console.info(json_str)
+//                 json_str.replace(/\'/g,'"');
+// //                 console.info(eval(json_str))
+// console.info(json_str)
+//                 json_str.replace(/u\"/g,'\"');
+//                 
+// console.info(json_str)
+//                 var obj = $.parseJSON( json_str );
+// //                 var obj = str
+// console.info(obj)
+//                 
+//                 var str = JSON.stringify(obj, undefined, 4);
+// console.info(str)
+                var entry_json = {{ entry.entry_json|jsonify }};
+                
+                console.info(entry_json)
+                        
+//                     var str = JSON.stringify(eval(json_str));
+//                     var obj = $.parseJSON( json_str );
+                    
+                    
+                var str = JSON.stringify(entry_json, undefined, 4);
+                console.info(str)
+                $(".json_entry").html(syntaxHighlight(str));
+                
+
+//             output(str);
+//             output(syntaxHighlight(str));
+            
+            
+            })
+        </script>
+
+        
+    
+    {% endblock %}
